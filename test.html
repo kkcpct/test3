@@ -20,27 +20,31 @@
 		    fReader.readAsText(file);
 		}
 
-//http://blog.xuite.net/xiaolian/blog/58941542-%E3%80%90AJAX%E3%80%91%E8%AE%80%E5%8F%96%E6%96%87%E5%AD%97%E6%AA%94
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    	console.log(xmlhttp.responseText);
-    	document.getElementById('fileContent').value = xmlhttp.responseText;
-    }
-  }
-xmlhttp.open("GET","README.md",true);
-xmlhttp.send();
-
+		function get_file_in_text(filepath){
+			//http://blog.xuite.net/xiaolian/blog/58941542-%E3%80%90AJAX%E3%80%91%E8%AE%80%E5%8F%96%E6%96%87%E5%AD%97%E6%AA%94
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+			  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  xmlhttp=new XMLHttpRequest();
+			  }
+			else
+			  {// code for IE6, IE5
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			xmlhttp.onreadystatechange=function()
+			  {
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			    {
+			    	//console.log(xmlhttp.responseText);
+			    	//document.getElementById('fileContent').value = xmlhttp.responseText;
+			    	return xmlhttp.responseText;
+			    }
+			  }
+			xmlhttp.open("GET",filepath,true);
+			xmlhttp.send();
+		}
+		document.getElementById('fileContent').value = get_file_in_text("README.md");
+		console.log(get_file_in_text("README.md"));
 	</script>
 </head>
 <body>
