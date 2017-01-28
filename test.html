@@ -34,7 +34,7 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    	consolo.log(xmlhttp.responseText);
+    	console.log(xmlhttp.responseText);
     	document.getElementById('fileContent').value = xmlhttp.responseText;
     }
   }
