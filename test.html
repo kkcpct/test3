@@ -21,7 +21,7 @@
 		//     fReader.readAsText(file);
 		// }
 
-		function get_file_in_text(filepath){
+		function get_file_in_text(filepath,target_id,output_type){
 			//http://blog.xuite.net/xiaolian/blog/58941542-%E3%80%90AJAX%E3%80%91%E8%AE%80%E5%8F%96%E6%96%87%E5%AD%97%E6%AA%94
 			var xmlhttp;
 			if (window.XMLHttpRequest)
@@ -36,9 +36,15 @@
 			  {
 			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 			    {
-			    	console.log(xmlhttp.responseText);
-			    	document.getElementById('fileContent').value = markdown_to_html(xmlhttp.responseText);
-			    	return xmlhttp.responseText;
+			    	if (output_type == 'html'){
+				    	console.log(markdown_to_html(xmlhttp.responseText));
+				    	document.getElementById(target_id).value = markdown_to_html(xmlhttp.responseText);
+				    	return markdown_to_html(xmlhttp.responseText);
+			    	}else{
+				    	console.log(xmlhttp.responseText);
+				    	document.getElementById(target_id).value = xmlhttp.responseText;
+				    	return xmlhttp.responseText;
+			    	}
 			    }
 			  }
 			xmlhttp.open("GET",filepath,true);
@@ -51,8 +57,8 @@
 		}
 
 		//document.getElementById('fileContent').value = markdown_to_html(get_file_in_text("README.md"));//get_file_in_text("README.md");
-		console.log(get_file_in_text("README.md"));
-		console.log(markdown_to_html(get_file_in_text("README.md")));
+		var gethtml = get_file_in_text('README.md','fileContent','html');
+		//console.log(markdown_to_html(get_file_in_text("README.md")));
 	</script>
 </head>
 <body>
