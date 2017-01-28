@@ -36,8 +36,8 @@
 			  {
 			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 			    {
-			    	//console.log(xmlhttp.responseText);
-			    	//document.getElementById('fileContent').value = xmlhttp.responseText;
+			    	console.log(xmlhttp.responseText);
+			    	document.getElementById('fileContent').value = markdown_to_html(xmlhttp.responseText);
 			    	return xmlhttp.responseText;
 			    }
 			  }
@@ -50,7 +50,7 @@
 			return converter.makeHtml(text);
 		}
 
-		document.getElementById('fileContent').value = markdown_to_html(get_file_in_text("README.md"));//get_file_in_text("README.md");
+		//document.getElementById('fileContent').value = markdown_to_html(get_file_in_text("README.md"));//get_file_in_text("README.md");
 		console.log(get_file_in_text("README.md"));
 		console.log(markdown_to_html(get_file_in_text("README.md")));
 	</script>
