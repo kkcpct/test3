@@ -38,11 +38,13 @@
 			    {
 			    	if (output_type == 'html'){
 				    	console.log(markdown_to_html(xmlhttp.responseText));
-				    	document.getElementById(target_id).value = markdown_to_html(xmlhttp.responseText);
+				    	//document.getElementById(target_id).value = markdown_to_html(xmlhttp.responseText); ////textarea
+				    	document.getElementById(target_id).innerHTML = markdown_to_html(xmlhttp.responseText);
 				    	return markdown_to_html(xmlhttp.responseText);
 			    	}else{
 				    	console.log(xmlhttp.responseText);
-				    	document.getElementById(target_id).value = xmlhttp.responseText;
+				    	//document.getElementById(target_id).value = xmlhttp.responseText; //textarea
+				    	document.getElementById(target_id).innerHTML = '<textarea id="fileContent_raw" cols="68" rows="10">' + xmlhttp.responseText + '</textarea>';
 				    	return xmlhttp.responseText;
 			    	}
 			    }
