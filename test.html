@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
 	<!-- <link rel="stylesheet" href=""> -->
+	<script type="text/javascript" src="https://cdn.rawgit.com/showdownjs/showdown/1.6.1/dist/showdown.min.js"></script>
 	<script type="text/javascript">
 		window.onload = function () {
 		    document.getElementById('myfile').onchange = readFile;
@@ -43,8 +44,15 @@
 			xmlhttp.open("GET",filepath,true);
 			xmlhttp.send();
 		}
-		document.getElementById('fileContent').value = get_file_in_text("README.md");
+
+		function markdown_to_html(text){
+			var converter = new showdown.Converter();
+			return converter.makeHtml(text);
+		}
+
+		document.getElementById('fileContent').value = markdown_to_html(get_file_in_text("README.md"));//get_file_in_text("README.md");
 		console.log(get_file_in_text("README.md"));
+		console.log(markdown_to_html(get_file_in_text("README.md")));
 	</script>
 </head>
 <body>
