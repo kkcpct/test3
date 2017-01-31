@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<!-- http://www.kangting.tw/2012/09/html5-filereader.html -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<!-- <link rel="stylesheet" href=""> -->
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script async src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script async type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+	<!-- markdown to HTML -->
+	<script async type="text/javascript" src="https://cdn.rawgit.com/showdownjs/showdown/1.6.1/dist/showdown.min.js"></script>
+	<script type="text/javascript">
+		// window.onload = function () {
+		//     document.getElementById('myfile').onchange = readFile;
+		// };
+		// function readFile() {
+		//     file = this.files[0];
+		//     console.log(this.files[0]);
+		//     var fReader = new FileReader();           
+		//     fReader.onload = function (event) {
+		//         document.getElementById('fileContent').value = event.target.result;
+		//     };
+		//     fReader.readAsText(file);
+		// }
+
+		function get_file_in_text(filepath,target_id,output_type){
+			//http://blog.xuite.net/xiaolian/blog/58941542-%E3%80%90AJAX%E3%80%91%E8%AE%80%E5%8F%96%E6%96%87%E5%AD%97%E6%AA%94
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+			  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  xmlhttp=new XMLHttpRequest();
+			  }
+			else
+			  {// code for IE6, IE5
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			xmlhttp.onreadystatechange=function()
+			  {
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			    {
+			    	if (output_type == 'html'){
+				    	console.log(markdown_to_html(xmlhttp.responseText));
+				    	//document.getElementById(target_id).value = markdown_to_html(xmlhttp.responseText); ////textarea
+				    	document.getElementById(target_id).innerHTML = markdown_to_html(xmlhttp.responseText);
+				    	return markdown_to_html(xmlhttp.responseText);
+			    	}else{
+				    	console.log(xmlhttp.responseText);
+				    	//document.getElementById(target_id).value = xmlhttp.responseText; //textarea
+				    	document.getElementById(target_id).innerHTML = '<textarea id="fileContent_raw" cols="68" rows="10">' + xmlhttp.responseText + '</textarea>';
+				    	return xmlhttp.responseText;
+			    	}
+			    }
+			  }
+			xmlhttp.open("GET",filepath,true);
+			xmlhttp.send();
+		}
+
+		function markdown_to_html(text){
+			var converter = new showdown.Converter();
+			return converter.makeHtml(text);
+		}
+
+		var gethtml = get_file_in_text('README.md','md','html'); //需要處理延遲
+		//var gethtml = get_file_in_text('LICENSE.txt','md','htm');
+	</script>
+</head>
+<body>
+<!--     <p> <input id="myfile"  type="file" /></p>
+    <textarea  id="fileContent" cols="68" rows="10"  ></textarea> -->
+	<div id="md"></div>
+</body>
+</html>
