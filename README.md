@@ -1,8 +1,8 @@
-# test3
+п»ї# test3
 
 - Spectral by HTML5 UP
 - html5up.net | @ajlkn
 
-## ¦ЁҐ\ЕЄЁъ Markdown ¤еҐу ёСЄR¦^ HTML
+## ж€ђеЉџи®ЂеЏ– Markdown ж–‡д»¶ и§Јжћђе›ћ HTML
 
-- ``https://cdn.rawgit.com/showdownjs/showdown/1.6.1/dist/showdown.min.js`` ¬OҐD­n§в ``markdown Ва HTML`` ЄєҐ\¦ЪЎC
+- ``https://cdn.rawgit.com/showdownjs/showdown/1.6.1/dist/showdown.min.js`` жЇдё»и¦ЃжЉЉ ``markdown иЅ‰ HTML`` зљ„еЉџи‡ЈгЂ‚
